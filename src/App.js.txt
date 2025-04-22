@@ -1,0 +1,14 @@
+import React from 'react';
+import './App.css';
+
+function App() {
+  return (
+    <div className="hud-container">
+      <div className="pulse-glow" />
+      <h1 className="title">🚀 Smoke Alpha v1.0.1</h1>
+      <p className="subtitle">Sistema iniciado com sucesso.</p>
+    </div>
+  );
+}
+
+export default App;

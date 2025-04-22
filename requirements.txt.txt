@@ -1,0 +1,10 @@
+flask
+flask_cors
+openai
+speechrecognition
+pyttsx3
+numpy
+scikit-learn
+bcrypt
+cryptography
+psutil

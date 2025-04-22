@@ -1,0 +1,5 @@
+import time
+
+print("Smoke HUD iniciado...")
+time.sleep(1)
+print("Olá Smoke!")

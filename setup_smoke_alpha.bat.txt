@@ -1,0 +1,24 @@
+@echo off
+title Smoke Alpha - Setup
+echo [Smoke Alpha] Iniciando setup completo...
+
+python -m venv venv
+call venv\Scripts\activate
+
+echo Instalando dependências Python...
+pip install --upgrade pip
+pip install -r requirements.txt
+
+cd src
+echo Instalando dependências do HUD (npm install)...
+npm install
+
+start npm start
+
+cd ..
+start cmd /k "call venv\Scripts\activate && cd api && python app.py"
+
+start cmd /k "call venv\Scripts\activate && python simulate_offline_mode.py"
+
+echo [Smoke Alpha] Sistema iniciado com sucesso.
+pause

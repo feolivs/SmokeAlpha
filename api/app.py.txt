@@ -1,0 +1,33 @@
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+import pyttsx3
+import datetime
+import platform
+
+app = Flask(__name__)
+CORS(app)
+
+# Inicializa o motor de voz
+voz = pyttsx3.init()
+voz.setProperty('rate', 170)
+
+@app.route("/")
+def status():
+    return jsonify({
+        "status": "online",
+        "versao": "1.0.1",
+        "nome": "Smoke Alpha",
+        "sistema": platform.system(),
+        "hora": datetime.datetime.now().isoformat()
+    })
+
+@app.route("/falar", methods=["POST"])
+def falar():
+    data = request.json
+    texto = data.get("mensagem", "Olá, Smoke.")
+    voz.say(texto)
+    voz.runAndWait()
+    return jsonify({"falado": texto})
+
+if __name__ == "__main__":
+    app.run(host="127.0.0.1", port=5000, debug=False)
